@@ -14,6 +14,7 @@
   ~ limitations under the License.
   -->
 <resources>
+<<<<<<< HEAD
     <string name="app_name">Dogglers</string>
     <string name="dog_age">Age: %1$s</string>
     <string name="dog_hobbies">Hobbies: %1$s</string>
@@ -21,4 +22,12 @@
     <string name="horizontal">Horizontal</string>
     <string name="grid">Grid</string>
     <string name="Dog_1">Tzeitel</string>
+=======
+    <string name="app_name">Lemonade</string>
+    <string name="lemon_select">Click to select a lemon!</string>
+    <string name="lemon_squeeze">Click to juice the lemon!</string>
+    <string name="lemon_drink">Click to drink your lemonade!</string>
+    <string name="lemon_empty_glass">Click to start again!</string>
+    <string name="squeeze_count">Squeeze count: %1$d, keep squeezing!</string>
+>>>>>>> b78702cf88ce4145471fdc94a096ffacae9bc590
 </resources>

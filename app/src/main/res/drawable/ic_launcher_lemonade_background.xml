@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2021 The Android Open Source Project.
   ~
@@ -14,18 +13,15 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
-<<<<<<< HEAD
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-=======
-    <color name="yellow_light">#ffff8b</color>
-    <color name="yellow_primary">#ffee58</color>
-    <color name="yellow_dark">#FFD600</color>
->>>>>>> b78702cf88ce4145471fdc94a096ffacae9bc590
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-</resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <group android:scaleX="0.6"
+      android:scaleY="0.6">
+    <path
+        android:pathData="M-3.628,-3.628h187.257v187.257h-187.257z"
+        android:fillColor="#02b5c8"/>
+  </group>
+</vector>

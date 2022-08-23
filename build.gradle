@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 * Copyright (C) 2021 The Android Open Source Project.
 *
@@ -15,6 +16,11 @@
 */
 buildscript {
     ext.kotlin_version = "1.3.72"
+=======
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.7.10"
+>>>>>>> b78702cf88ce4145471fdc94a096ffacae9bc590
     repositories {
         google()
         mavenCentral()
