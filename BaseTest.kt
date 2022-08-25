@@ -13,31 +13,70 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.lunchtray
+package com.example.amphibians
 
-import androidx.test.core.app.launchActivity
+import android.view.View
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewInteraction
+import androidx.test.espresso.matcher.ViewMatchers.isRoot
+import androidx.test.espresso.util.TreeIterables
+import org.hamcrest.Matcher
+import java.lang.Exception
+import java.lang.Thread.sleep
 
 open class BaseTest {
 
-    fun fullOrderFlow() {
-        // Launch the main activity
-        launchActivity<MainActivity>()
-        // Start order
-        onView(withId(R.id.start_order_btn)).perform(click())
-        // Select entree item
-        onView(withId(R.id.cauliflower)).perform(click())
-        // Move to next fragment
-        onView(withId(R.id.next_button)).perform(click())
-        // Select side item
-        onView(withId(R.id.salad)).perform(click())
-        // Move to next fragment
-        onView(withId(R.id.next_button)).perform(click())
-        // Select accompaniment item
-        onView(withId(R.id.bread)).perform(click())
-        // Move to next fragment
-        onView(withId(R.id.next_button)).perform(click())
+    companion object {
+        fun lookFor(matcher: Matcher<View>): ViewAction {
+            return object : ViewAction {
+                override fun getConstraints(): Matcher<View> {
+                    return isRoot()
+                }
+
+                override fun getDescription(): String {
+                    return "Looking for $matcher"
+                }
+
+                override fun perform(uiController: UiController?, view: View?) {
+                    var attempts = 0
+                    val childViews: Iterable<View> = TreeIterables.breadthFirstViewTraversal(view)
+                    childViews.forEach {
+                        attempts++
+                        if (matcher.matches(it)) {
+                            return
+                        }
+                    }
+
+                    throw NoMatchingViewException.Builder()
+                        .withRootView(view)
+                        .withViewMatcher(matcher)
+                        .build()
+                }
+            }
+        }
+    }
+
+    fun waitForView(matcher: Matcher<View>,
+                    timeoutMillis: Int = 5000,
+                    attemptTimeoutMillis: Long = 100
+    ): ViewInteraction {
+        val maxAttempts = timeoutMillis / attemptTimeoutMillis.toInt()
+        var attempts = 0
+        for (i in 0..maxAttempts) {
+            try {
+                attempts++
+                onView(isRoot()).perform(lookFor(matcher))
+                return onView(matcher)
+            } catch (e: Exception) {
+                if (attempts == maxAttempts) {
+                    throw e
+                }
+                sleep(attemptTimeoutMillis)
+            }
+        }
+        throw Exception("Could not find a view matching $matcher")
     }
 }

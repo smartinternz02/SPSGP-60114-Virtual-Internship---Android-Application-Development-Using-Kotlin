@@ -1,14 +1,14 @@
-Forage - Starter Code
+Amphibians - Starter Code
 ==================================
 
-Starter code for the fifth independent project for Android Basics in Kotlin. This project pairs
-with Unit 5 of Android Basics in Kotlin
+Starter code for the fourth independent project for Android Basics in Kotlin. This project pairs
+with Unit 4 of Android Basics in Kotlin
 
 Introduction
 ------------
 
-This is the starter code for the Forage app project. This project is an opportunity for you to
-demonstrate the concepts you learned in Unit 5 of Android Basics in Kotlin.
+This is the starter code for the Amphibian app project. This project is an opportunity for you to
+demonstrate the concepts you learned in Unit 4 of Android Basics in Kotlin.
 
 Pre-requisites
 --------------
@@ -20,8 +20,6 @@ Pre-requisites
 - Complete Unit 3 of Android Basics in Kotlin
 - Complete Project 3: Lunch Tray
 - Complete Unit 4 of Android Basics in Kotlin
-- Complete Project 4: Amphibians
-- Complete Unit 5 of Android Basics in Kotlin
 
 Getting Started
 ---------------
