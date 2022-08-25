@@ -14,34 +14,17 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">Lunch Tray</string>
-    <string name="tile_start_order">Order</string>
-    <string name="title_coupons">Coupons</string>
-    <string name="title_entree_menu">Entrees</string>
-    <string name="title_side_menu">Sides</string>
-    <string name="title_accompaniment_menu">Accompaniments</string>
-    <string name="title_checkout">Checkout</string>
-    <string name="start_order">Start Order</string>
-    <string name="subtotal">Subtotal: %s</string>
-    <string name="tax">Tax: %s</string>
-    <string name="total">Total: %s</string>
-    <string name="next">Next</string>
-    <string name="order_summary">Order Summary</string>
-    <string name="submit">Submit Order</string>
-    <string name="submit_order">Order Submitted!</string>
+    <string name="app_name">Forage</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="list_fragment_label">List Fragment</string>
+    <string name="add_fragment_label">Add Fragment</string>
 
-
-    <string name="cauliflower">cauliflower</string>
-    <string name="chili">chili</string>
-    <string name="pasta">pasta</string>
-    <string name="skillet">skillet</string>
-    <string name="salad">salad</string>
-    <string name="soup">soup</string>
-    <string name="potatoes">potatoes</string>
-    <string name="rice">rice</string>
-    <string name="bread">bread</string>
-    <string name="berries">berries</string>
-    <string name="pickles">pickles</string>
-
-
+    <string name="forageable_name">Name</string>
+    <string name="forageable_location">Location</string>
+    <string name="in_season">Currently in season</string>
+    <string name="out_of_season">Currently out of season</string>
+    <string name="notes">Notes</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>
