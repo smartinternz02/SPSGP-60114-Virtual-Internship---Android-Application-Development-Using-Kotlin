@@ -1,170 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2021 The Android Open Source Project.
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout_checkout"
-    tools:context=".ui.order.CheckoutFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".view.ui.home.CheckoutFragment">
 
-    <!-- TODO: Add the data binding variables of the type OrderViewModel and the CheckoutFragment -->
-    <data>
-        <variable
-            name="viewModel"
-            type="com.example.lunchtray.model.OrderViewModel" />
-        <variable
-            name="checkoutFragment"
-            type="com.example.lunchtray.ui.order.CheckoutFragment" />
-    </data>
+    <include
+        android:id="@+id/appBarLayout"
+        layout="@layout/item_appbar_layout"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/checkoutLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:overScrollMode="never"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_place_order"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/side_margin">
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/delivery_address"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/order_summary"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Label"
-                android:text="@string/order_summary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_big"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-            <!-- TODO: display the entree name based on the entree selection -->
-            <TextView
-                android:id="@+id/entree_selection"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/order_summary"
-                tools:text="Cauliflower"
-                android:text="@{viewModel.entree.name}"/>
-
-            <!-- TODO: display the entree price based on the entree selection -->
-            <TextView
-                android:id="@+id/entree_price"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/entree_selection"
-                tools:text="$7.00"
-                android:text="@{viewModel.entree.formattedPrice}"/>
-
-            <!-- TODO: display the side name based on the side selection -->
-            <TextView
-                android:id="@+id/side_selection"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/entree_selection"
-                tools:text="Spicy Potatoes"
-                android:text="@{viewModel.side.name}"/>
-
-            <!-- TODO: display the side price based on the side selection -->
-            <TextView
-                android:id="@+id/side_price"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/side_selection"
-                tools:text="$2.00"
-                android:text="@{viewModel.side.formattedPrice}"/>
-
-            <!-- TODO: display the accompaniment name based on the accompaniment selection -->
-            <TextView
-                android:id="@+id/accompaniment_selection"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/side_selection"
-                tools:text="Mixed Berries"
-                android:text="@{viewModel.accompaniment.name}"/>
-
-            <!-- TODO: display the accompaniment price based on the accompaniment selection -->
-            <TextView
-                android:id="@+id/accompaniment_price"
-                style="@style/Widget.LunchTray.TextView.CheckoutItem.Info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/accompaniment_selection"
-                tools:text="$1.00"
-                android:text="@{viewModel.accompaniment.formattedPrice}"/>
-
-            <View
-                android:id="@+id/divider"
-                style="@style/Widget.LunchTray.Divider"
-                android:layout_marginBottom="@dimen/side_margin"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/accompaniment_selection" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <!-- TODO: set the text to the current subtotal value from the view model -->
-            <TextView
-                android:id="@+id/subtotal"
-                style="@style/Widget.LunchTray.TextView.Subtotal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider"
-                tools:text="Subtotal: $10.00"
-                android:text="@{@string/subtotal(viewModel.subtotal)}"/>
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/user_location_map_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-            <!-- TODO: set the text to the current tax value from the view model -->
-            <TextView
-                android:id="@+id/tax"
-                style="@style/Widget.LunchTray.TextView.Subtotal"
-                android:layout_marginTop="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/subtotal"
-                tools:text="Tax: $0.73"
-                android:text="@{@string/tax(viewModel.tax)}"/>
+            </androidx.cardview.widget.CardView>
 
-            <!-- TODO: set the text to the current total value from the view model -->
-            <TextView
-                android:id="@+id/total"
+            <ImageView
+                android:id="@+id/imageView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAllCaps="true"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tax"
-                tools:text="Total: $10.73"
-                android:text="@{@string/total(viewModel.total)}"/>
-
-            <!-- TODO: submit the order when clicked -->
-            <Button
-                android:id="@+id/submit_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/side_margin"
-                android:text="@string/submit"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_location_outline"
+                app:layout_constraintBottom_toBottomOf="@+id/checkoutCity"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/total"
-                android:onClick="@{() -> checkoutFragment.submitOrder()}"/>
+                app:layout_constraintTop_toTopOf="@+id/checkoutAddress" />
 
-            <!-- TODO: cancel the order when clicked -->
-            <Button
-                android:id="@+id/cancel_button"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/checkoutAddress"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin"
-                android:text="@string/cancel"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/submit_button"
-                android:onClick="@{()->checkoutFragment.cancelOrder()}"/>
+                android:layout_marginStart="@dimen/dp_8"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                tools:text="Tomas Cabiles St" />
 
+            <TextView
+                android:id="@+id/checkoutCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintTop_toBottomOf="@+id/checkoutAddress"
+                tools:text="Tabaco City" />
+
+            <ImageView
+                android:id="@+id/edit_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:src="@drawable/ic_pen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".75" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</layout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/margin_big"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_gray_f2f_rounded_100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/checkout_merchant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:text="Jollibee Tabaco" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/checkoutRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintHeight_max="384dp"
+            android:layout_marginHorizontal="@dimen/margin_big"
+            android:layout_marginVertical="@dimen/margin_small"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkout_merchant"
+            tools:listitem="@layout/item_checkout" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/margin_big"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:background="@drawable/bg_gray_f2f_rounded_100dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:text="@string/payment_method"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/img_method"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/edit_payment_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:src="@drawable/ic_pen"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+        <ImageView
+            android:id="@+id/img_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:src="@drawable/ic_money"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/payment_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_method"
+            app:layout_constraintStart_toEndOf="@+id/img_method"
+            app:layout_constraintTop_toTopOf="@+id/img_method"
+            tools:text="Cash" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="8dp"
+            android:text="@string/subtotal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:text="@string/delivery_fee"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/checkoutSubTotalTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView11"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            tools:text="₱344.00" />
+
+        <TextView
+            android:id="@+id/delivery_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="₱49.00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView13"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <android.widget.Button
+        android:id="@+id/btn_place_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:background="@drawable/bg_red_a30_rounded_16dp"
+        tools:text="Place Order • ₱145"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
