@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lunch_Tray.iml" filepath="$PROJECT_DIR$/.idea/modules/Lunch_Tray.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lunch_Tray.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lunch_Tray.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Nearby-Places-Finder-master.iml" filepath="$PROJECT_DIR$/.idea/modules/Nearby-Places-Finder-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Nearby-Places-Finder-master.app.unitTest.iml" />
     </modules>
   </component>
 </project>
