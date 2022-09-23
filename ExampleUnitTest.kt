@@ -1,4 +1,4 @@
-package com.example.rodrigo.nearbyplaces
+package com.vroomvroom.android
 
 import org.junit.Test
 
